@@ -13,8 +13,10 @@ function MyDocument() {
                 <meta name="description" content="Next.js 樣板" />
                 <meta name="keywords" content="關鍵字1,關鍵字2,關鍵字3" />
 
-                <link rel="shortcut icon" href="/images/favicon.ico" />
-                <link rel="apple-touch-icon" href="/images/favicon.ico" />
+                {/* <link rel="shortcut icon" href="/public/images/favicon.ico" />
+                <link rel="apple-touch-icon" href="/public/images/favicon.ico" /> */}
+                <link rel="shortcut icon" href="/static/favicon.ico" />
+                <link rel="apple-touch-icon" href="/static/favicon.ico" />
 
                 {/* Google Fonts */}
                 <link
