@@ -35,7 +35,7 @@ const HeaderWrapper = styled.header`
             css`
                 height: 65px;
                 padding: 10px 0;
-                transition: all 0.5s;
+                transition: all 0.4s;
             `}
     }
 `
@@ -73,7 +73,7 @@ const LogoContainer = styled.div`
             css`
                 width: 55.63px;
                 height: 33.6px;
-                transition: all 0.5s;
+                transition: all 0.4s;
 
                 img {
                     width: 55.63px;
@@ -94,12 +94,12 @@ const BurgerContainer = styled.div`
     height: 30px;
 
     div {
-        transition: all 0.2s;
+        transition: all 0.4s;
     }
 
     /* 三條槓<-->叉叉 互相轉換 */
-    ${({ dropdownLinksBar }) =>
-        dropdownLinksBar &&
+    ${({ isLinksBarDropdown }) =>
+        isLinksBarDropdown &&
         css`
             div:nth-child(1) {
                 position: absolute;
@@ -107,8 +107,8 @@ const BurgerContainer = styled.div`
             }
             div:nth-child(2) {
                 position: absolute;
-                opacity: 0;
                 z-index: -9999;
+                opacity: 0;
             }
             div:nth-child(3) {
                 position: absolute;
@@ -140,17 +140,16 @@ const LinksBarWrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-
     background-color: #ffffff;
     z-index: -9999;
     opacity: 0;
     transform: scale(1, 0);
     transform-origin: top;
-    transition: opacity 0.2s;
+    transition: opacity 0.4s;
 
     /* 手機版按三條槓後顯示 LinksBarWrapper */
-    ${({ dropdownLinksBar }) =>
-        dropdownLinksBar &&
+    ${({ isLinksBarDropdown }) =>
+        isLinksBarDropdown &&
         css`
             z-index: 1;
             opacity: 1;
@@ -160,17 +159,16 @@ const LinksBarWrapper = styled.div`
     @media (min-width: 768px) {
         position: relative;
         top: 0;
-        width: 100%;
-        max-width: 798px;
-        height: 100%;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: flex-end;
         align-items: flex-end;
+        width: 100%;
+        max-width: 800px;
+        height: 100%;
+        padding-bottom: 10px;
         z-index: 1;
         opacity: 1;
         transform: scale(1, 1);
-
-        padding-bottom: 10px;
     }
 
     @media (min-width: 1600px) {
@@ -222,7 +220,7 @@ const LinksGroupContainer = styled.div`
 
     @media (min-width: 768px) {
         width: auto;
-        margin: 0 auto;
+        margin: 0 20px;
         background-color: #ffffff;
         padding: 0;
 
@@ -247,6 +245,10 @@ const LinksGroupContainer = styled.div`
             }
         }
     }
+
+    @media (min-width: 1200px) {
+        margin: 0 30px;
+    }
 `
 
 const LinksGroup = styled.div`
@@ -261,12 +263,13 @@ const LinksGroup = styled.div`
     background-color: #ffffff;
     transform: scale(1, 0);
     transform-origin: top;
-    transition: transform 0.2s;
+    transition: transform 0.4s;
 
     a {
         width: 100%;
         padding: 8px 24px;
         border-bottom: 1px solid #ffffff;
+        background-color: rgba(0, 77, 160, 0.1);
         color: #595757;
         font-size: 16px;
         font-style: normal;
@@ -274,7 +277,6 @@ const LinksGroup = styled.div`
         line-height: 23px;
         text-decoration: none;
         cursor: pointer;
-        background-color: rgba(0, 77, 160, 0.1);
 
         :hover {
             text-decoration: underline;
@@ -291,14 +293,13 @@ const LinksGroup = styled.div`
             transform: scale(1, 1);
             width: calc(100% + 48px);
             background-color: #ffffff;
-            opacity: 1;
             z-index: 999;
+            opacity: 1;
         `}
 
     @media (min-width: 768px) {
         position: absolute;
         top: calc(24px + 19px);
-        width: 185px;
         width: auto;
         box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
@@ -316,13 +317,13 @@ const LinksGroup = styled.div`
 
 const Mask = styled.div`
     position: fixed;
-    top: 56px;
+    top: 50px;
     left: 0;
     display: none;
     width: 100vw;
     height: 100vh;
     background-color: black;
-    opacity: 0.2;
+    opacity: 0.15;
 
     ${({ show }) =>
         show &&
@@ -363,15 +364,16 @@ const data = [
 ]
 
 export default function Header() {
-    const [dropdownLinksBar, setDropdownLinksBar] = useState(false)
+    const [isLinksBarDropdown, setIdLinksBarDropdown] = useState(false)
     const [show, setShow] = useState(null)
     const [isHeaderShrink, setIsHeaderShrink] = useState(false)
 
     useEffect(() => {
         const handleResize = () => {
+            // 如果銀幕切換到電腦版的尺寸(>=768px)，則把手機版時會展開的 LinksGroupContainer 都縮合起來
             if (window.innerWidth >= 768) {
                 setShow(null)
-                setDropdownLinksBar(false)
+                setIdLinksBarDropdown(false)
             }
         }
         const handleScroll = () => {
@@ -419,16 +421,16 @@ export default function Header() {
             {/* 三條槓按鈕 */}
             <BurgerContainer
                 onClick={() => {
-                    setDropdownLinksBar((n) => !n)
+                    setIdLinksBarDropdown((n) => !n)
                 }}
-                dropdownLinksBar={dropdownLinksBar}
+                isLinksBarDropdown={isLinksBarDropdown}
             >
                 <BurgerBar />
                 <BurgerBar />
                 <BurgerBar />
             </BurgerContainer>
 
-            <LinksBarWrapper dropdownLinksBar={dropdownLinksBar} isHeaderShrink={isHeaderShrink}>
+            <LinksBarWrapper isLinksBarDropdown={isLinksBarDropdown} isHeaderShrink={isHeaderShrink}>
                 {data.length > 0 &&
                     data.map((datum, index) => (
                         <LinksGroupContainer
@@ -454,7 +456,7 @@ export default function Header() {
             </LinksBarWrapper>
 
             {/* 手機版選單開啟時，遮罩 */}
-            <Mask show={dropdownLinksBar} />
+            <Mask show={isLinksBarDropdown} />
         </HeaderWrapper>
     )
 }
