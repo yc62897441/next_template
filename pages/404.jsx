@@ -31,7 +31,7 @@ const MessageWrapper = styled.div`
 `
 
 export default function Custom404() {
-    const [second, setSecond] = useState(50)
+    const [second, setSecond] = useState(5)
 
     // 秒數歸 0 時導回首頁
     if (second <= 0) {
