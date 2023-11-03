@@ -15,34 +15,34 @@ const HeaderWrapper = styled.header`
     align-items: center;
     width: 100%;
     height: 50px;
-    padding: 0 30px;
-    background-color: #ffffff;
+    padding: 0 20px;
+    background-color: #fefefe;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     z-index: 9998;
 
     @media (min-width: 768px) {
         justify-content: space-around;
-        height: 65px;
-        padding: 10px 0;
+        height: 55px;
+        padding: 5px 0;
     }
 
     @media (min-width: 1600px) {
-        height: 80px;
-        padding: 20px 0;
+        height: 60px;
+        padding: 10px 0;
 
         ${({ isHeaderShrink }) =>
             isHeaderShrink &&
             css`
-                height: 65px;
-                padding: 10px 0;
+                height: 55px;
+                padding: 5px 0;
                 transition: all 0.4s;
             `}
     }
 `
 
 const LogoContainer = styled.div`
-    width: 46.4px;
-    height: 28px;
+    width: 41.42px;
+    height: 25px;
 
     img {
         width: 100%;
@@ -50,34 +50,34 @@ const LogoContainer = styled.div`
     }
 
     @media (min-width: 768px) {
-        width: 55.63px;
-        height: 33.6px;
+        width: 49.66px;
+        height: 30px;
 
         img {
-            width: 55.63px;
-            height: 33.6px;
+            width: 49.66px;
+            height: 30px;
         }
     }
 
     @media (min-width: 1600px) {
-        width: 79.1px;
-        height: 48px;
+        width: 74.15px;
+        height: 45px;
 
         img {
-            width: 79.1px;
-            height: 48px;
+            width: 74.15px;
+            height: 45px;
         }
 
         ${({ isHeaderShrink }) =>
             isHeaderShrink &&
             css`
-                width: 55.63px;
-                height: 33.6px;
+                width: 49.66px;
+                height: 30px;
                 transition: all 0.4s;
 
                 img {
-                    width: 55.63px;
-                    height: 33.6px;
+                    width: 49.66px;
+                    height: 30px;
                 }
             `}
     }
@@ -107,12 +107,12 @@ const BurgerContainer = styled.div`
             }
             div:nth-child(2) {
                 position: absolute;
-                z-index: -9999;
-                opacity: 0;
+                transform: rotate(-45deg);
             }
             div:nth-child(3) {
                 position: absolute;
-                transform: rotate(-45deg);
+                z-index: -9999;
+                opacity: 0;
             }
         `}
 
@@ -127,7 +127,7 @@ const BurgerBar = styled.div`
     width: 20px;
     height: 2px;
     margin: 2px 0;
-    background-color: #000000;
+    background-color: #444444;
 `
 
 // 連結選單最外層
@@ -140,7 +140,7 @@ const LinksBarWrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: #ffffff;
+    background-color: #fefefe;
     z-index: -9999;
     opacity: 0;
     transform: scale(1, 0);
@@ -165,7 +165,7 @@ const LinksBarWrapper = styled.div`
         width: 100%;
         max-width: 800px;
         height: 100%;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
         z-index: 1;
         opacity: 1;
         transform: scale(1, 1);
@@ -177,7 +177,7 @@ const LinksBarWrapper = styled.div`
         ${({ isHeaderShrink }) =>
             isHeaderShrink &&
             css`
-                padding-bottom: 10px;
+                padding-bottom: 5px;
             `}
     }
 `
@@ -190,10 +190,10 @@ const LinksGroupContainer = styled.div`
     align-items: flex-start;
 
     width: 100%;
-    padding: 8px 24px;
-    background-color: rgba(128, 128, 128, 0.1);
+    padding: 6px 20px;
+    background-color: #eeeeee;
 
-    color: #595757;
+    color: #444444;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -221,7 +221,7 @@ const LinksGroupContainer = styled.div`
     @media (min-width: 768px) {
         width: auto;
         margin: 0 20px;
-        background-color: #ffffff;
+        background-color: #fefefe;
         padding: 0;
 
         :hover {
@@ -234,7 +234,7 @@ const LinksGroupContainer = styled.div`
                 display: block;
                 width: 100%;
                 height: 16px;
-                background-color: #ffffff;
+                background-color: #fefefe;
             }
 
             div:nth-child(2) {
@@ -260,17 +260,17 @@ const LinksGroup = styled.div`
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #fefefe;
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 0.4s;
 
     a {
         width: 100%;
-        padding: 8px 24px;
-        border-bottom: 1px solid #ffffff;
+        padding: 6px 20px;
+        border-bottom: 1px solid #fefefe;
         background-color: rgba(0, 77, 160, 0.1);
-        color: #595757;
+        color: #444444;
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
@@ -289,23 +289,23 @@ const LinksGroup = styled.div`
         css`
             position: relative;
             top: 8px;
-            left: -24px;
+            left: -20px;
             transform: scale(1, 1);
-            width: calc(100% + 48px);
-            background-color: #ffffff;
+            width: calc(100% + 40px);
+            background-color: #fefefe;
             z-index: 999;
             opacity: 1;
         `}
 
     @media (min-width: 768px) {
         position: absolute;
-        top: calc(24px + 19px);
+        top: calc(24px + 9px);
         width: auto;
         box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
         a {
-            padding: 8px 20px;
-            background-color: #ffffff;
+            padding: 6px 20px;
+            background-color: #fefefe;
 
             :hover {
                 text-decoration: none;
@@ -322,8 +322,8 @@ const Mask = styled.div`
     display: none;
     width: 100vw;
     height: 100vh;
-    background-color: black;
-    opacity: 0.15;
+    background-color: #444444;
+    opacity: 0.3;
 
     ${({ show }) =>
         show &&
@@ -430,7 +430,10 @@ export default function Header() {
                 <BurgerBar />
             </BurgerContainer>
 
-            <LinksBarWrapper isLinksBarDropdown={isLinksBarDropdown} isHeaderShrink={isHeaderShrink}>
+            <LinksBarWrapper
+                isLinksBarDropdown={isLinksBarDropdown}
+                isHeaderShrink={isHeaderShrink}
+            >
                 {data.length > 0 &&
                     data.map((datum, index) => (
                         <LinksGroupContainer
